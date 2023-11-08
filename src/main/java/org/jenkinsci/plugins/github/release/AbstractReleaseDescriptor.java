@@ -8,8 +8,10 @@ import jenkins.model.Jenkins;
 import org.jenkinsci.plugins.plaincredentials.StringCredentials;
 import org.jenkinsci.plugins.workflow.steps.StepDescriptor;
 import org.kohsuke.stapler.AncestorInPath;
+import org.kohsuke.stapler.interceptor.RequirePOST;
 
 public abstract class AbstractReleaseDescriptor extends StepDescriptor {
+  @RequirePOST
   public ListBoxModel doFillCredentialIdItems(@AncestorInPath Item context) {
 
 

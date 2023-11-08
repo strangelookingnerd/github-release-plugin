@@ -21,6 +21,8 @@ import org.jenkinsci.plugins.workflow.steps.StepExecution;
 import org.kohsuke.stapler.AncestorInPath;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.DataBoundSetter;
+import org.kohsuke.stapler.interceptor.RequirePOST;
+import org.kohsuke.stapler.verb.POST;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -117,8 +119,13 @@ public class ListReleasesStep extends Step implements Serializable, GitHubParame
       return "listGitHubReleases";
     }
 
-    @SuppressWarnings("lgtm[jenkins/no-permission-check]")
+    @RequirePOST
     public ListBoxModel doFillSortByItems(@AncestorInPath Item context) {
+      if (context == null && !Jenkins.get().hasPermission(Jenkins.ADMINISTER) ||
+          context != null && !context.hasPermission(Item.EXTENDED_READ)) {
+        return new StandardListBoxModel();
+      }
+
       return new StandardListBoxModel()
           .includeEmptyValue()
           .add("SymantecVersion");
