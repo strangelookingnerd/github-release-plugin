@@ -11,13 +11,13 @@
     </parent>
 
     <properties>
-        <jenkins.version>2.361.4</jenkins.version>
+        <jenkins.version>2.387.3</jenkins.version>
         <hpi.compatibleSinceVersion>2.32</hpi.compatibleSinceVersion>
 <!--        <java.level>11</java.level>-->
     </properties>
 
     <groupId>io.jenkins.plugins</groupId>
-    <artifactId>github-release-plugin</artifactId>
+    <artifactId>github-release</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>hpi</packaging>
     <name>Github Release Plugin</name>
