@@ -117,6 +117,7 @@ public class ListReleasesStep extends Step implements Serializable, GitHubParame
       return "listGitHubReleases";
     }
 
+    @SuppressWarnings("lgtm[jenkins/no-permission-check]")
     public ListBoxModel doFillSortByItems(@AncestorInPath Item context) {
       return new StandardListBoxModel()
           .includeEmptyValue()

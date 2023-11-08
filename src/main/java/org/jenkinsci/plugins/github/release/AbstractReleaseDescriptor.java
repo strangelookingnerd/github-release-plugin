@@ -11,9 +11,9 @@ import org.kohsuke.stapler.AncestorInPath;
 
 public abstract class AbstractReleaseDescriptor extends StepDescriptor {
   public ListBoxModel doFillCredentialIdItems(@AncestorInPath Item context) {
-    Jenkins jenkins = Jenkins.get();
 
-    if (context == null && !jenkins.hasPermission(Jenkins.ADMINISTER) ||
+
+    if (context == null && !Jenkins.get().hasPermission(Jenkins.ADMINISTER) ||
         context != null && !context.hasPermission(Item.EXTENDED_READ)) {
       return new StandardListBoxModel();
     }
